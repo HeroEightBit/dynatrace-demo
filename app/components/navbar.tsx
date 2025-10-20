@@ -16,7 +16,16 @@ export default function Navbar() {
   const [username, setUsername] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [oneAgentActive, setOneAgentActive] = useState(false);
 
+  // Check if OneAgent (window.dtrum) is present
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.dtrum) {
+      setOneAgentActive(true);
+    } else {
+      setOneAgentActive(false);
+    }
+  }, []);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setUsername(inputValue);
@@ -42,7 +51,13 @@ export default function Navbar() {
 
   return (
     <nav className="navbar" style={{ display: 'flex', flexDirection: 'column', height: '100vh', justifyContent: 'flex-start' }}>
-      <form onSubmit={handleSubmit} style={{ marginBottom: 32, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 6, paddingTop: 8 }}>
+      {/* OneAgent status indicator */}
+      <div style={{ marginBottom: 8, paddingTop: 8 }}>
+        <span style={{ fontWeight: 500, color: oneAgentActive ? '#22c55e' : '#ef4444', fontSize: '0.95rem' }}>
+          OneAgent Status: {oneAgentActive ? 'Active' : 'Not Detected'}
+        </span>
+      </div>
+      <form onSubmit={handleSubmit} style={{ marginBottom: 32, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 6 }}>
         <label htmlFor="navbar-username" style={{ fontWeight: 500, color: '#2563eb', marginBottom: 0, whiteSpace: 'nowrap' }}>
           Username:{' '}
           {username && (
