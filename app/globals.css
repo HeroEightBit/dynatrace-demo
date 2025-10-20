@@ -1,5 +1,20 @@
 @import "tailwindcss";
 
+
+.username-bar {
+  width: 100vw;
+  background: #f8fafc;
+  padding: 14px 0 12px 0;
+  border-bottom: 1.5px solid #e5e7eb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
 .navbar {
   display: flex;
   flex-direction: column;
