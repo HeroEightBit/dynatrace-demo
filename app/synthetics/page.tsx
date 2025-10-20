@@ -8,11 +8,14 @@ function ShadowDomDemo() {
   // Attach shadow DOM on mount
   useEffect(() => {
     if (hostRef.current && !shadowReady) {
-      const shadow = hostRef.current.attachShadow({ mode: "open" });
-      const inner = document.createElement("div");
-      inner.innerHTML = `<button id='shadow-btn' style='padding:8px 16px;border-radius:6px;background:#e0e7ff;color:#1d4ed8;border:1.5px solid #2563eb;'>Shadow DOM Button</button>`;
-      shadow.appendChild(inner);
-      setShadowReady(true);
+      // Only attach if not already attached
+      if (!hostRef.current.shadowRoot) {
+        const shadow = hostRef.current.attachShadow({ mode: "open" });
+        const inner = document.createElement("div");
+        inner.innerHTML = `<button id='shadow-btn' style='padding:8px 16px;border-radius:6px;background:#e0e7ff;color:#1d4ed8;border:1.5px solid #2563eb;'>Shadow DOM Button</button>`;
+        shadow.appendChild(inner);
+        setShadowReady(true);
+      }
     }
   }, [shadowReady]);
 
