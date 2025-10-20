@@ -1,3 +1,10 @@
+
+## Disclaimer
+
+This project is **not supported, endorsed, or created by Dynatrace**. It is an independent demo/testing project for Dynatrace features. Use at your own risk.
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
